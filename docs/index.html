@@ -13,18 +13,17 @@
   <link rel="stylesheet" href="styles.css">
   
   <title>Crowdfunding product page</title>
-
 </head>
 
 <body>
-  <header class="header">
-    <nav class="navbar">
-      <div class="logo">
+  <header>
+    <nav>
+      <figure class="logo">
         <img src="../images/logo.svg" alt="logo">
-      </div>
+      </figure>
       
-      <div class="hamburger">
-        <div class="hamburger-lines"></div>
+      <div class="burger">
+        <div class="burger-lines"></div>
       </div>
       
       <ul class="nav-links">
@@ -35,7 +34,7 @@
     </nav>
   </header>
   
-  <div class="hamburger-menu d-none">
+  <div class="burger-menu d-none">
     <ul>
       <li>About</li>
       <hr>
@@ -45,13 +44,13 @@
     </ul>
   </div>
   
-  <div class="cuerpo">
-    <div class="seccion1">
-      <div Class="sec1cabeza">
+  <main>
+    <section class="seccion1">
+      <figure Class="sec1cabeza">
         <img src="../images/logo-mastercraft.svg" alt="imagen" />
-      </div>
+      </figure>
       <div class="sec1cuerpo">
-        <h2>Mastercraft Bamboo Monitor Riser </h2>
+        <h2>Mastercraft Bamboo Monitor Riser</h2>
         <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.
         </p>
       </div>
@@ -62,8 +61,9 @@
           <button class="btn2">Bookmark</button>
         </div>
       </div>
-    </div>
-    <div class="seccion2">
+    </section>
+
+    <section class="stats">
       <div class="sec2cabeza">
         <div class="col1">
           <h1> $89,914</h1>
@@ -82,11 +82,9 @@
         <div class="barra">
         </div>
       </div>
-    </div>
+    </section>
 
-    <!--  JOHN BROWN, de aquí pa' abajo te encargas tú, recuerda que será MOBILE FIRST -->
-
-    <div class="seccion3">
+    <section class="seccion3">
       <h3>About this project</h3>
       <p>
         The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen
@@ -171,52 +169,10 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
   
   
-<main>
-  Mastercraft Bamboo Monitor Riser
-  A beautiful & handcrafted monitor stand to reduce neck and eye strain.
-
-  Back this project
-  Bookmark
-
-  $89,914 of $100,000 backed
-  5,007 total backers
-  56 days left
-
-  <!--  JOHN BROWN, de aquí pa' abajo te encargas tú, recuerda que será MOBILE FIRST -->
-  About this project
-
-  The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen 
-  to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve 
-  your posture and make you more comfortable while at work, helping you stay focused on the task at hand.
-
-  Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer 
-  to allow notepads, pens, and USB sticks to be stored under the stand.
-  
-  Bamboo Stand
-  Pledge $25 or more
-  You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and 
-  you’ll be added to a special Backer member list.
-  101 left
-  Select Reward
-
-  Black Edition Stand
-  Pledge $75 or more
-  You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer 
-  member list. Shipping is included.
-  64 left
-  Select Reward
-
-  Mahogany Special Edition
-  Pledge $200 or more
-  You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added 
-  to our Backer member list. Shipping is included.
-  0 left
-  Out of Stock
-
   <!-- Selection modal start -->
 
   Back this project
@@ -270,10 +226,8 @@
   Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
   an email once our campaign is completed.
   Got it!
-</main>
   <!-- Success modal end -->
 
-<script src="hamburger-menu.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>

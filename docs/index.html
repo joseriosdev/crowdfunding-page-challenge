@@ -45,20 +45,24 @@
   </div>
   
   <main>
-    <section class="seccion1">
-      <figure Class="sec1cabeza">
+    <section>
+      <figure class="mastercraft-logo">
         <img src="../images/logo-mastercraft.svg" alt="imagen" />
       </figure>
-      <div class="sec1cuerpo">
-        <h2>Mastercraft Bamboo Monitor Riser</h2>
-        <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.
-        </p>
+      <div class="main-title">
+        <h1>Mastercraft Bamboo Monitor Riser</h1>
+        <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
       </div>
-      <div class="sec1botones">
-        <button class="btn1" onclick="modal1()">Back this project</button>
-        <div class="bookmark" onclick="bookmark()">
-          <img src="../images/icon-bookmark.svg" alt="img" />
-          <button class="btn2">Bookmark</button>
+      <div class="init-btns-container">
+        <button class="main-btn" onclick="modal1()">Back this project</button>
+        <div class="bookmark-container" onclick="bookmarkClick(event, this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+            <g fill="none" fill-rule="evenodd">
+              <circle fill="#2F2F2F" cx="28" cy="28" r="28"/>
+              <path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/>
+            </g>
+          </svg>
+          <button class="bookmark-btn">Bookmark</button>
         </div>
       </div>
     </section>
@@ -84,7 +88,7 @@
       </div>
     </section>
 
-    <section class="seccion3">
+    <section class="about">
       <h3>About this project</h3>
       <p>
         The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen
@@ -94,7 +98,7 @@
         Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer
         to allow notepads, pens, and USB sticks to be stored under the stand.
       </p>
-      <div class="bloque" id="bloque1">
+      <div class="item-card" id="bloque1">
         <div class="bloquecabeza">
           <div class="bloquetitulo1">
             <h3> Bamboo Stand</h3>
@@ -103,10 +107,10 @@
             <p>Pledge $25 or more</p>
           </div>
         </div>
-        <div class="bloquecuerpo">
+        <p class="bloquecuerpo">
           You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
           you’ll be added to a special Backer member list.
-        </div>
+        </p>
         <div class="bloquepie">
           <div class="bloquepie1">
             <p>
@@ -119,7 +123,7 @@
           </div>
         </div>
       </div>
-      <div class="bloque" id="bloque2">
+      <div class="item-card" id="bloque2">
         <div class="bloquecabeza">
           <div class="bloquetitulo1">
             <h3>Black Edition Stand</h3>
@@ -128,10 +132,10 @@
             <p>Pledge $75 or more</p>
           </div>
         </div>
-        <div class="bloquecuerpo">
+        <p class="bloquecuerpo">
           You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
           member list. Shipping is included.
-        </div>
+        </p>
         <div class="bloquepie">
           <div class="bloquepie1">
             <p>
@@ -144,7 +148,7 @@
           </div>
         </div>
       </div>
-      <div class="bloque" id="bloque3">
+      <div class="item-card" id="bloque3">
         <div class="bloquecabeza">
           <div class="bloquetitulo1">
             <h3>Mahogany Special Edition</h3>
@@ -153,10 +157,10 @@
             <p>Pledge $200 or more</p>
           </div>
         </div>
-        <div class="bloquecuerpo">
+        <p class="bloquecuerpo">
           You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
           to our Backer member list. Shipping is included.
-        </div>
+        </p>
         <div class="bloquepie">
           <div class="bloquepie1">
             <p>
@@ -175,7 +179,7 @@
   
   <!-- Selection modal start -->
 
-  Back this project
+  <!-- Back this project
   Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
 
   Pledge with no reward
@@ -186,46 +190,46 @@
   Pledge $25 or more
   You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
   you’ll be added to a special Backer member list.
-  101 left
+  101 left -->
 
   <!-- Selected pledge start -->
-  Enter your pledge
+  <!-- Enter your pledge
   $25
-  Continue
+  Continue -->
   <!-- Selected pledge end -->
 
-  Black Edition Stand
+  <!-- Black Edition Stand
   Pledge $75 or more
   You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
   member list. Shipping is included.
-  64 left
+  64 left -->
 
   <!-- Selected pledge start -->
-  Enter your pledge
+  <!-- Enter your pledge
   $75
-  Continue
+  Continue -->
   <!-- Selected pledge end -->
 
-  Mahogany Special Edition
+  <!-- Mahogany Special Edition
   Pledge $200 or more
   You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
   to our Backer member list. Shipping is included.
-  0 left
+  0 left -->
 
   <!-- Selected pledge  start -->
-  Enter your pledge
+  <!-- Enter your pledge
   $200
-  Continue
+  Continue -->
   <!-- Selected pledge end -->
 
   <!-- Selection modal end -->
 
   <!-- Success modal start -->
 
-  Thanks for your support!
+  <!-- Thanks for your support!
   Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
   an email once our campaign is completed.
-  Got it!
+  Got it! -->
   <!-- Success modal end -->
 
 <script src="script.js"></script>

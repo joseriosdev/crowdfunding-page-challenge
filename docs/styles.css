@@ -1,39 +1,61 @@
 /************************************ GENERAL SET UP ************************************/
+:root {
+  --cyan:hsl(176, 50%, 47%);
+  --dark-cyan: hsl(176, 72%, 28%);
+  --dark-grey: hsl(0, 0%, 48%);
+  --bookmark-circle: #2F2F2F;
+  --bookmark-path: #B1B1B1;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red !important; */
 }
 
 body {
   font-family: 'Commissioner', sans-serif;
+  font-size: 16px;
   line-height: 16px;
   color: black;
-  background-color: rgb(219, 214, 214);
+  background-color: whitesmoke;
   font-size: 16px;
 }
 
 main {
-  margin: 15% auto 10%;
+  margin: 15% auto 2rem;
   width: 90vw;
   transform: translateY(-5%);
   position: relative;
 }
 
 section {
+  margin-bottom: 1rem;
   padding: 1rem;
+  border: 1px solid azure;
+  border-radius: 10px;
+  background-color: white;
+}
+
+h3, h4 {
+  font-weight: 700;
+}
+
+p {
+  color: var(--dark-grey);
 }
 
 button {
   padding: 2% 4%;
+  border: none;
   border-radius: 25px;
-  font-size: 16px;
   font-weight: 500;
-  background-color: rgb(73, 170, 149);
+  background-color: var(--cyan);
   color: white;
   border: none;
 } button:hover {
-  background-color: rgb(46, 131, 113);
+  background-color: var(--dark-cyan);
   cursor: pointer;
 }
 /************************************ END GENERAL SET UP ************************************/
@@ -44,16 +66,14 @@ header {
   height: 300px;
   position: relative;
   background: url(../images/image-hero-desktop.jpg) no-repeat center center/cover;
-} header::after {
+} header::before {
   content: '';
   position: absolute;
   width: inherit;
-  height: inherit;
+  height: 10%;
   top: 0;
   left: 0;
-  background: linear-gradient(rgba(0,0,0, .6) 5%, transparent 95%);
-} header * {
-  z-index: 1;
+  background: linear-gradient(rgba(0,0,0, .4) 0%, transparent 100%);
 }
 
 header nav {
@@ -73,6 +93,7 @@ header .burger {
   width: 25px;
   height: 25px;
   cursor: pointer;
+  z-index: 3;
 }
 
 header .burger .burger-lines,
@@ -144,73 +165,50 @@ header .nav-links {
 
 .burger-menu.open {
   display: block;
+  z-index: 2;
 }
 /************************************ END HEADER & NAV & BURGUER ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 /************************************ BODY ************************************/
-.seccion1 {
-  padding: 5%;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.sec1cabeza {
+.mastercraft-logo {
+  margin-top: 1rem;
   position: relative;
-  /* padding-bottom: 3%; */
-}
-
-.sec1cabeza>img {
+} .mastercraft-logo img {
   position: absolute;
   top: -100%;
   left: 50%;
-  /* transform: translate(0%, -120%); */
-  /* margin-bottom: 0%; */
+  transform: translate(-50%, -100%);
+  margin-bottom: 0%;
 }
 
-.sec1cuerpo>h2 {
+.main-title h1 {
   font-weight: 700;
   padding: 2% 0%;
-  color: black;
   text-align: center;
   line-height: 110%;
-}
-
-.sec1cuerpo>p {
+} .main-title p {
   font-weight: 500;
   padding: 2% 0%;
-  color: grey;
   text-align: center;
   line-height: 120%;
 }
 
-.sec1botones {
+.init-btns-container {
   display: flex;
   padding: 3% 0% 5%;
-  flex: auto;
   align-items: stretch;
+  justify-content: space-between;
 }
 
-.btn1 {
+.main-btn {
   font-weight: 700;
   height: auto;
-  width: 100%;
+  width: 75%;
   font-size: 18px;
 }
 
-.bookmark {
-  margin-left: 5%;
-  padding: 0%;
-}
-
-.btn2 {
-  display: none;
-}
-
-.stats {
-  background-color: white;
-  margin: 3% 0%;
-  padding: 3% 2%;
-  border-radius: 5px;
+.bookmark-btn {
+  display: none; 
 }
 
 .sec2cabeza {
@@ -240,7 +238,6 @@ header .nav-links {
 
 .sec2cabeza p {
   padding-top: 2%;
-  color: grey;
 }
 
 .barra {
@@ -263,20 +260,8 @@ header .nav-links {
   background-color: teal;
 }
 
-.seccion3 {
-  background-color: white;
-  padding: 10% 5% 10% 5%;
-  border-radius: 5px;
-}
-
-h3 {
-  font-weight: 700;
-  color: black;
-}
-
-.seccion3>p {
+.about > p {
   margin: 8% 0%;
-  color: grey;
   text-align: left;
   line-height: 1.5;
   margin: 4% 0%;
@@ -284,8 +269,8 @@ h3 {
   padding: 5% 0%;
 }
 
-.bloque {
-  border: 1px solid grey;
+.item-card {
+  border: 1px solid lightgray;
   border-radius: 5px;
   padding: 20px 20px 20px;
   margin: 3% 0%;
@@ -310,15 +295,9 @@ h3 {
   color: rgb(75, 189, 151);
 }
 
-h4 {
-  font-weight: 700;
-  color: black;
-}
-
 .bloquecuerpo {
   padding-right: 10%;
   line-height: 1.5;
-  color: grey;
 }
 
 .bloquepie {
@@ -343,19 +322,27 @@ h4 {
   width: 150px;
 }
 
-#bloque3{
+#bloque3 {
   opacity: 0.5;
 }
 /************************************ END BODY ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 /************************************ UTILS ************************************/
 
-.overflow-hidden { overflow: hidden }
+.overflow-hidden {
+  overflow: hidden;
+}
+
 
 /************************************ END UTILS ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 
 @media (min-width: 500px) {
+  main {
+    width: 50vw;
+    transform: translateY(-12%);
+  }
+
   header .burger {
     display: none;
   }
@@ -368,6 +355,23 @@ h4 {
     list-style: none;
     color: white;
     font-size: .8rem;
+  } header .nav-links li {
     cursor: pointer;
+  }
+
+  .bookmark-container {
+    display: flex;
+    width: 35%;
+    margin-left: 5%;
+    padding: 0%;
+    border-radius: 25px;
+    background-color: lightgray;
+    cursor: pointer;
+  } .bookmark-btn {
+    display: block;
+    background-color: inherit;
+    color: var(--dark-grey);
+  } .bookmark-btn:hover {
+    background-color: inherit;
   }
 }

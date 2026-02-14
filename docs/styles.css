@@ -32,7 +32,7 @@ main {
 
 section {
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 3rem 1.5rem;
   border: 1px solid azure;
   border-radius: 10px;
   background-color: white;
@@ -44,6 +44,13 @@ h3, h4 {
 
 p {
   color: var(--dark-grey);
+}
+
+hr {
+  margin: 0 auto 0;
+  width: 5rem;
+  border-radius: 10px;
+  opacity: .6;
 }
 
 button {
@@ -177,7 +184,7 @@ header .nav-links {
   position: absolute;
   top: -100%;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -150%);
   margin-bottom: 0%;
 }
 
@@ -211,56 +218,41 @@ header .nav-links {
   display: none; 
 }
 
-.sec2cabeza {
+/*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
+
+.stats {
   display: flex;
   flex-direction: column;
   padding: 2% 0%;
-}
-
-.col1,
-.col2,
-.col3 {
-  flex-direction: column;
-  align-items: center;
-  flex: 100%;
+} .stat-number {
   text-align: center;
-  font-weight: 700;
   padding: 6% 0%;
-  border: none;
-  line-height: 200%;
+  line-height: 250%;
 }
 
-.col2 {
-  margin: 0% 30%;
-  border-top: 2px solid rgb(228, 233, 226);
-  border-bottom: 2px solid rgb(228, 233, 226);
-}
-
-.sec2cabeza p {
-  padding-top: 2%;
-}
-
-.barra {
-  width: 100%;
-  height: 8px;
-  margin-bottom: 6%;
-  background-color: rgba(196, 188, 187,.5);
-  border-radius: 25px;
+#progress-bar {
   position: relative;
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 6%;
+  background-color: lightgray;
+  border-radius: 25px;
 }
 
-.barra::before{
+#progress-bar::before{
   content: '';
   position: absolute;
+  width: var(--before-progress-w, 78%);
+  height: inherit;
   top: 0;
   left: 0;
-  border-radius: 25px;
-  width: 78%;
-  height: 8px;
-  background-color: teal;
+  background-color: var(--cyan);
+  border-radius: inherit;
 }
 
-.about > p {
+/*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
+
+.about p {
   margin: 8% 0%;
   text-align: left;
   line-height: 1.5;
@@ -321,10 +313,6 @@ header .nav-links {
 .bloquepie2 button {
   width: 150px;
 }
-
-#bloque3 {
-  opacity: 0.5;
-}
 /************************************ END BODY ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 /************************************ UTILS ************************************/
@@ -333,11 +321,20 @@ header .nav-links {
   overflow: hidden;
 }
 
+.half-opacity {
+  opacity: 0.5;
+}
+
 
 /************************************ END UTILS ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 
 @media (min-width: 500px) {
+  hr {
+    width: 0;
+    height: 5rem;
+  }
+
   main {
     width: 50vw;
     transform: translateY(-12%);
@@ -373,5 +370,11 @@ header .nav-links {
     color: var(--dark-grey);
   } .bookmark-btn:hover {
     background-color: inherit;
+  }
+
+  .stats {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }

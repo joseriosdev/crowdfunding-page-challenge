@@ -1,39 +1,121 @@
-const bookmarkStorageKey = 'bookmarked';
-const burger = document.querySelector('.burger');
-const burgerMenu = document.querySelector('.burger-menu');
+const key_siteIntiated = 'site_intiated';
+const key_bookmarked = 'bookmarked';
 const bookmarkElmt = document.querySelector('.bookmark-container');
-const handleMouseEnter = () => handleBookmarkHover(true);
-const handleMouseLeave = () => handleBookmarkHover(false);
-
-document.addEventListener('DOMContentLoaded', () => handleBookmark(bookmarkElmt, false));
-bookmarkElmt.addEventListener('mouseenter', handleMouseEnter);
-bookmarkElmt.addEventListener('mouseleave', handleMouseLeave);
-
-burger.addEventListener('click', () => 
+//--
+const burgerElmt = document.querySelector('.burger');
+const burgerMenuElmt = document.querySelector('.burger-menu');
+//--
+const moneyElmt = document.getElementById('money');
+const moneyGoalElmt = document.getElementById('money-goal');
+const totalBackersElmt = document.getElementById('total-backers');
+const daysLeftElmt = document.getElementById('days-left');
+const barElmt = document.getElementById('progress-bar');
+const bambooLeftElmt = document.getElementById('bamboo-left');
+const blackLeftElmt = document.getElementById('black-left');
+const mahoganyLeftElmt = document.getElementById('mahogany-left');
+const defaultValType = Object.freeze({ MONEY: 0, NUMBER: 1, OTHER: 2 });
+const defaultValues = Object.freeze( //--didn't know 'get' and 'set' were really stuff here in JS
 {
-  burgerMenu.classList.toggle('open');
-  burger.classList.toggle('ex');
-  document.querySelector('body').classList.toggle('overflow-hidden');
+  money_raised:           { value: 75560, type: defaultValType.MONEY, element: moneyElmt },
+  money_goal:             { value: 100000, type: defaultValType.MONEY, element: moneyGoalElmt },
+  total_backers:          { value: 5007, type: defaultValType.NUMBER, element: totalBackersElmt },
+  days_left:              { value: 56, type: defaultValType.NUMBER, element: daysLeftElmt },
+  item_bamboo_left:       { value: 101, type: defaultValType.NUMBER, element: bambooLeftElmt },
+  item_black_left:        { value: 64, type: defaultValType.NUMBER, element: blackLeftElmt },
+  item_mahogany_left:     { value: 0, type: defaultValType.NUMBER, element: mahoganyLeftElmt },
+  get progress_bar() {
+    return { value: (this.money_raised.value / this.money_goal.value) * 100, type: defaultValType.OTHER, element: barElmt }
+  }
 });
 
+/** -------- EVENTS -------- **/
+const handleContentLoaded = () =>
+{
+  setUpDynamicValues();
+  handleBookmark(bookmarkElmt, false);
+};
+
+document.addEventListener('DOMContentLoaded', handleContentLoaded);
+bookmarkElmt.addEventListener('mouseenter', () => handleBookmarkHover(true));
+bookmarkElmt.addEventListener('mouseleave', () => handleBookmarkHover(false));
+
+burgerElmt.addEventListener('click', () => 
+{
+  console.log('clicked')
+  burgerMenuElmt.classList.toggle('open');
+  burgerElmt.classList.toggle('ex');
+  document.querySelector('body').classList.toggle('overflow-hidden');
+});
 
 function bookmarkClick(e, element)
 {
   e.preventDefault();
   handleBookmark(element, true);
 }
+/** -------- END EVENTS -------- **/
+
+
+/////////////////////////////////////////////////////////////////////////////
+function setUpDynamicValues(forceInitValues = false)
+{
+  const alreadySetUp = localStorage.getItem(key_siteIntiated);
+  Object.keys(defaultValues).forEach(key =>
+  {
+    if(!alreadySetUp || forceInitValues)
+    {
+      const numberFormatter = new Intl.NumberFormat();
+      const moneyFormatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumSignificantDigits: 6
+      });
+
+      if(defaultValues[key].type === defaultValType.MONEY)
+      {
+        const newVal = moneyFormatter.format(defaultValues[key].value);
+        defaultValues[key].element.innerText = newVal;
+        localStorage.setItem(key, newVal);
+      }
+      else if(defaultValues[key].type === defaultValType.NUMBER)
+      {
+        const newVal = numberFormatter.format(defaultValues[key].value);
+        defaultValues[key].element.innerText = newVal;
+        localStorage.setItem(key, newVal);
+      }
+      else
+      {
+        const newVal = `${defaultValues[key].value}%`;
+        defaultValues[key].element.style.setProperty('--before-progress-w', newVal);
+        localStorage.setItem(key, newVal);
+      }
+    }
+    else
+    {
+      const val = localStorage.getItem(key);
+      
+      if(key.startsWith('item_')) defaultValues[key].value <= 0
+        ? document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.add('half-opacity')
+        : document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.remove('half-opacity');
+      else if(defaultValues[key].type !== defaultValType.OTHER)
+        defaultValues[key].element.innerText = val;
+      else
+        defaultValues[key].element.style.setProperty('--before-progress-w', val);
+    }
+  });
+  if(!alreadySetUp) localStorage.setItem(key_siteIntiated, '1');
+}
 
 function handleBookmark(element, toggle)
 {
   const rootedStyles = window.getComputedStyle(document.documentElement);
-  let isBookmarked = !!localStorage.getItem(bookmarkStorageKey);
+  let isBookmarked = !!localStorage.getItem(key_bookmarked);
   const circle = document.querySelector('circle');
   const path = document.querySelector('path');
   const button = element.firstElementChild.nextElementSibling;
 
   if(toggle)
   {
-    localStorage.setItem(bookmarkStorageKey, isBookmarked ? '' : '1');
+    localStorage.setItem(key_bookmarked, isBookmarked ? '' : '1');
     isBookmarked = !isBookmarked;
   }
 
@@ -57,7 +139,7 @@ function handleBookmark(element, toggle)
 function handleBookmarkHover(isEntered)
 {
   const rootedStyles = window.getComputedStyle(document.documentElement);
-  const isBookmarked = !!localStorage.getItem(bookmarkStorageKey);
+  const isBookmarked = !!localStorage.getItem(key_bookmarked);
   const circle = document.querySelector('circle');
   const button = document.querySelector('.bookmark-btn');
 

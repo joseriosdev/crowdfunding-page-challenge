@@ -34,7 +34,7 @@
     </nav>
   </header>
   
-  <div class="burger-menu d-none">
+  <div class="burger-menu">
     <ul>
       <li>About</li>
       <hr>
@@ -67,23 +67,25 @@
       </div>
     </section>
 
-    <section class="stats">
-      <div class="sec2cabeza">
-        <div class="col1">
-          <h1> $89,914</h1>
-          <p> of $100,000 backed</p>
+    <section>
+      <div class="stats">
+        <div class="stat-number">
+          <h1 id="money"></h1>
+          <p>of <span id="money-goal"></span> backed</p>
         </div>
-        <div class="col2">
-          <h1>5,007</h1>
-          <p> total backers</p>
+        <hr/>
+        <div class="stat-number">
+          <h1 id="total-backers"></h1>
+          <p>total backers</p>
         </div>
-        <div class="col3">
-          <h1>56</h1>
-          <p> days left</p>
+        <hr/>
+        <div class="stat-number">
+          <h1 id="days-left"></h1>
+          <p>days left</p>
         </div>
       </div>
-      <div class="sec2pie">
-        <div class="barra">
+      <div>
+        <div id="progress-bar">
         </div>
       </div>
     </section>
@@ -101,7 +103,7 @@
       <div class="item-card" id="bloque1">
         <div class="bloquecabeza">
           <div class="bloquetitulo1">
-            <h3> Bamboo Stand</h3>
+            <h3>Bamboo Stand</h3>
           </div>
           <div class="bloquetitulo2">
             <p>Pledge $25 or more</p>
@@ -114,7 +116,7 @@
         <div class="bloquepie">
           <div class="bloquepie1">
             <p>
-              <span>101</span>
+              <span id="bamboo-left"></span>
               left
             </p>
           </div>
@@ -139,7 +141,7 @@
         <div class="bloquepie">
           <div class="bloquepie1">
             <p>
-              <span>64</span>
+              <span id="black-left"></span>
               left
             </p>
           </div>
@@ -148,7 +150,7 @@
           </div>
         </div>
       </div>
-      <div class="item-card" id="bloque3">
+      <div class="item-card">
         <div class="bloquecabeza">
           <div class="bloquetitulo1">
             <h3>Mahogany Special Edition</h3>
@@ -164,7 +166,7 @@
         <div class="bloquepie">
           <div class="bloquepie1">
             <p>
-              <span>0</span>
+              <span id="mahogany-left"></span>
               left
             </p>
           </div>

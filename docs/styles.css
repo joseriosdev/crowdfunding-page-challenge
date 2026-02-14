@@ -5,6 +5,8 @@
   --dark-grey: hsl(0, 0%, 48%);
   --bookmark-circle: #2F2F2F;
   --bookmark-path: #B1B1B1;
+  --mobile-width: 90vw;
+  --desktop-width: 50vw;
 }
 
 * {
@@ -25,7 +27,7 @@ body {
 
 main {
   margin: 15% auto 2rem;
-  width: 90vw;
+  width: var(--mobile-width);
   transform: translateY(-5%);
   position: relative;
 }
@@ -36,6 +38,31 @@ section {
   border: 1px solid azure;
   border-radius: 10px;
   background-color: white;
+}
+
+modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0, .5);
+  z-index: 4;
+  overflow: hidden;
+}
+
+my-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem 1.5rem;
+  width: var(--mobile-width);
+  display: block;
+  border-radius: 10px;
+  border: 1px solid azure;
+  background-color: white;
+  z-index: 5;
 }
 
 h3, h4 {
@@ -283,10 +310,6 @@ header .nav-links {
   color: var(--cyan);
 }
 
-.item-card-body {
-  /* line-height: 1.5; */
-}
-
 .item-card-footer {
   margin: 3% 0% 0%;
   display: flex;
@@ -295,9 +318,19 @@ header .nav-links {
   align-items: flex-start;
   height: 100px;
 }
-
-
 /************************************ END BODY ************************************/
+/*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
+/************************************ MODALS ************************************/
+.success-modal {
+  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+} .success-modal P {
+  text-align: center;
+}
+/************************************ END MODALS ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 /************************************ UTILS ************************************/
 
@@ -309,6 +342,9 @@ header .nav-links {
   opacity: 0.5;
 }
 
+.d-none {
+  display: none;
+}
 
 /************************************ END UTILS ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
@@ -320,8 +356,12 @@ header .nav-links {
   }
 
   main {
-    width: 50vw;
+    width: var(--desktop-width);
     transform: translateY(-12%);
+  }
+
+  my-modal {
+    width: 33vw;
   }
 
   header .burger {
@@ -367,5 +407,9 @@ header .nav-links {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .success-modal {
+    height: 50vh;
   }
 }

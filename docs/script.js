@@ -29,6 +29,7 @@ const defaultValues = Object.freeze( //--didn't know 'get' and 'set' were really
 });
 
 /** -------- EVENTS -------- **/
+const toggleModal = (id) => document.getElementById(id).classList.toggle('d-none');
 const handleContentLoaded = () =>
 {
   setUpDynamicValues();

@@ -41,7 +41,6 @@ bookmarkElmt.addEventListener('mouseleave', () => handleBookmarkHover(false));
 
 burgerElmt.addEventListener('click', () => 
 {
-  console.log('clicked')
   burgerMenuElmt.classList.toggle('open');
   burgerElmt.classList.toggle('ex');
   document.querySelector('body').classList.toggle('overflow-hidden');
@@ -93,13 +92,14 @@ function setUpDynamicValues(forceInitValues = false)
     {
       const val = localStorage.getItem(key);
       
-      if(key.startsWith('item_')) defaultValues[key].value <= 0
-        ? document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.add('half-opacity')
-        : document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.remove('half-opacity');
-      else if(defaultValues[key].type !== defaultValType.OTHER)
+      if(defaultValues[key].type !== defaultValType.OTHER)
         defaultValues[key].element.innerText = val;
       else
         defaultValues[key].element.style.setProperty('--before-progress-w', val);
+
+      if(key.startsWith('item_')) defaultValues[key].value <= 0
+        ? document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.add('half-opacity')
+        : document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.remove('half-opacity');  
     }
   });
   if(!alreadySetUp) localStorage.setItem(key_siteIntiated, '1');
@@ -123,7 +123,6 @@ function handleBookmark(element, toggle)
   {
     circle.style.fill = rootedStyles.getPropertyValue('--cyan').trim();
     path.style.fill = 'white';
-    console.log('TRUE');
     button.textContent = 'Bookmarked';
     button.style.color = rootedStyles.getPropertyValue('--cyan').trim();
   }

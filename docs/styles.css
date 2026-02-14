@@ -44,6 +44,12 @@ h3, h4 {
 
 p {
   color: var(--dark-grey);
+  font-weight: 400;
+}
+
+strong {
+  color: black;
+  font-size: 1.5rem;
 }
 
 hr {
@@ -54,7 +60,7 @@ hr {
 }
 
 button {
-  padding: 2% 4%;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 25px;
   font-weight: 500;
@@ -253,46 +259,35 @@ header .nav-links {
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 
 .about p {
-  margin: 8% 0%;
   text-align: left;
   line-height: 1.5;
-  margin: 4% 0%;
-  font-weight: 400;
-  padding: 5% 0%;
+} .about h3 {
+  margin-bottom: 1.5rem;
 }
 
 .item-card {
+  margin: 2rem 0;
+  padding: 20px;
   border: 1px solid lightgray;
   border-radius: 5px;
-  padding: 20px 20px 20px;
-  margin: 3% 0%;
 }
 
-.bloquecabeza {
-  padding-bottom: 5%;
+.item-card-head {
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
-}
-
-.bloquetitulo1,
-.bloquetitulo2 {
-  display: flex;
-  flex: 100%;
-  justify-content: flex-start;
+} .item-card-head h3 {
   padding: 1% 0%;
   line-height: 130%;
+} .item-card-head h5 {
+  color: var(--cyan);
 }
 
-.bloquetitulo2 {
-  color: rgb(75, 189, 151);
+.item-card-body {
+  /* line-height: 1.5; */
 }
 
-.bloquecuerpo {
-  padding-right: 10%;
-  line-height: 1.5;
-}
-
-.bloquepie {
+.item-card-footer {
   margin: 3% 0% 0%;
   display: flex;
   flex-direction: column;
@@ -301,18 +296,7 @@ header .nav-links {
   height: 100px;
 }
 
-.bloquepie1 span {
-  font-weight: 700;
-  font-size: 25px;
-}
 
-.bloquepie1 p{
-  margin-bottom: 1rem;
-}
-
-.bloquepie2 button {
-  width: 150px;
-}
 /************************************ END BODY ************************************/
 /*¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬*/
 /************************************ UTILS ************************************/
@@ -375,6 +359,13 @@ header .nav-links {
   .stats {
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .item-card-head,
+  .item-card-footer {
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
   }
 }

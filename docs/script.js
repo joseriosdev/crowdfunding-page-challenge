@@ -5,24 +5,32 @@ const bookmarkElmt = document.querySelector('.bookmark-container');
 const burgerElmt = document.querySelector('.burger');
 const burgerMenuElmt = document.querySelector('.burger-menu');
 //--
+
+//--
 const moneyElmt = document.getElementById('money');
 const moneyGoalElmt = document.getElementById('money-goal');
 const totalBackersElmt = document.getElementById('total-backers');
 const daysLeftElmt = document.getElementById('days-left');
 const barElmt = document.getElementById('progress-bar');
 const bambooLeftElmt = document.getElementById('bamboo-left');
+const bambooCostElmt = document.getElementById('bamboo-cost');
 const blackLeftElmt = document.getElementById('black-left');
+const blackCostElmt = document.getElementById('black-cost');
 const mahoganyLeftElmt = document.getElementById('mahogany-left');
+const mahoganyCostElmt = document.getElementById('mahogany-cost');
 const defaultValType = Object.freeze({ MONEY: 0, NUMBER: 1, OTHER: 2 });
 const defaultValues = Object.freeze( //--didn't know 'get' and 'set' were really stuff here in JS
 {
-  money_raised:           { value: 75560, type: defaultValType.MONEY, element: moneyElmt },
-  money_goal:             { value: 100000, type: defaultValType.MONEY, element: moneyGoalElmt },
-  total_backers:          { value: 5007, type: defaultValType.NUMBER, element: totalBackersElmt },
-  days_left:              { value: 56, type: defaultValType.NUMBER, element: daysLeftElmt },
-  item_bamboo_left:       { value: 101, type: defaultValType.NUMBER, element: bambooLeftElmt },
-  item_black_left:        { value: 64, type: defaultValType.NUMBER, element: blackLeftElmt },
-  item_mahogany_left:     { value: 0, type: defaultValType.NUMBER, element: mahoganyLeftElmt },
+  money_raised:       { value: 75560, type: defaultValType.MONEY, element: moneyElmt },
+  money_goal:         { value: 100000, type: defaultValType.MONEY, element: moneyGoalElmt },
+  total_backers:      { value: 5007, type: defaultValType.NUMBER, element: totalBackersElmt },
+  days_left:          { value: 56, type: defaultValType.NUMBER, element: daysLeftElmt },
+  item_bamboo_left:   { value: 101, type: defaultValType.NUMBER, element: bambooLeftElmt },
+  bamboo_cost:        { value: 25, type: defaultValType.MONEY, element: bambooCostElmt },
+  item_black_left:    { value: 64, type: defaultValType.NUMBER, element: blackLeftElmt },
+  black_cost:         { value: 75, type: defaultValType.MONEY, element: blackCostElmt },
+  item_mahogany_left: { value: 0, type: defaultValType.NUMBER, element: mahoganyLeftElmt },
+  mahogany_cost:      { value: 200, type: defaultValType.MONEY, element: mahoganyCostElmt },
   get progress_bar() {
     return { value: (this.money_raised.value / this.money_goal.value) * 100, type: defaultValType.OTHER, element: barElmt }
   }
@@ -37,8 +45,10 @@ const handleContentLoaded = () =>
 };
 
 document.addEventListener('DOMContentLoaded', handleContentLoaded);
+document.getElementById('got-it-btn').addEventListener('click', () => toggleModal('success-modal'));
 bookmarkElmt.addEventListener('mouseenter', () => handleBookmarkHover(true));
 bookmarkElmt.addEventListener('mouseleave', () => handleBookmarkHover(false));
+
 
 burgerElmt.addEventListener('click', () => 
 {
@@ -56,6 +66,11 @@ function bookmarkClick(e, element)
 
 
 /////////////////////////////////////////////////////////////////////////////
+function handleModalSuccess(modalID, elementToListen)
+{
+
+}
+
 function setUpDynamicValues(forceInitValues = false)
 {
   const alreadySetUp = localStorage.getItem(key_siteIntiated);
@@ -99,8 +114,8 @@ function setUpDynamicValues(forceInitValues = false)
         defaultValues[key].element.style.setProperty('--before-progress-w', val);
 
       if(key.startsWith('item_')) defaultValues[key].value <= 0
-        ? document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.add('half-opacity')
-        : document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.remove('half-opacity');  
+        ? document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.add('inactive-pledge')
+        : document.querySelector(`.item-card:has(#${defaultValues[key].element.id})`).classList.remove('inactive-pledge');  
     }
   });
   if(!alreadySetUp) localStorage.setItem(key_siteIntiated, '1');

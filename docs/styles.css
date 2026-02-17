@@ -338,7 +338,7 @@ header .nav-links {
   overflow: hidden;
 }
 
-.half-opacity {
+.inactive-pledge {
   opacity: 0.5;
 }
 

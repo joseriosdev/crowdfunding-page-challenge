@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="styles.css">
   
   <title>Crowdfunding product page</title>
+  <script src="Cmp_ItemSupportModal.js" defer></script>
 </head>
 
 <body>
@@ -153,7 +154,7 @@
 
   <modal-container id="support-modal" class="">
     <my-modal>
-      <div>
+      <div class="support-modal-header">
         <h3>Back this project</h3>
         <figure>
           <img src="../images/icon-close-modal.svg" />
@@ -161,6 +162,14 @@
       </div>
       <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
 
+
+      <item-support-modal cost="bamboo_cost" left="item_bamboo_left">
+        <div slot="title">Bamboo Stand</div>
+        <div slot="description">
+          You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
+          you’ll be added to a special Backer member list.
+        </div>
+      </item-support-modal>
       <div class="item-card">
         <div>
           <div><div></div></div>
@@ -172,7 +181,7 @@
         </p>
       </div>
 
-      <div class="item-card"></div>
+      <div class="item-card d-none"></div>
         <h5>Bamboo Stand</h5>
         Pledge $25 or more
         <p>
@@ -185,7 +194,7 @@
         Continue 
       </div>
 
-      <div class="item-card"></div>
+      <div class="item-card d-none"></div>
         <h5>Black Edition Stand</h5>
         Pledge $75 or more
 
@@ -199,7 +208,7 @@
         Continue 
       </div>
 
-      <div class="item-card"></div>
+      <div class="item-card d-none"></div>
         <h5>Mahogany Special Edition</h5>
         Pledge $200 or more
         <p>

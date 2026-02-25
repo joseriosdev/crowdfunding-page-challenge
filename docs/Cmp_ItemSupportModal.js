@@ -7,7 +7,18 @@ template.innerHTML = `
       border-radius: 5px;
       color: var(--dark-grey);
       font-weight: 400;
+      cursor: pointer;
+      transition: all .3s ease;
+    } main:hover {
+      border: 1px solid var(--cyan);
+      box-shadow: var(--cyan) 0px 0px 9px 1px;
+    } main:hover h4 {
+      color: var(--cyan);
+    } main:hover .circle {
+      border: 1px solid var(--cyan);
     }
+
+
 
     h5, h4 {
       margin: 0;
@@ -88,8 +99,23 @@ template.innerHTML = `
       font-weight: bold;
       font-size: 19px;
     }
-    @media (min-width: 500px) {
 
+    .d-none {
+      display: none;
+    }
+
+    .deactivated {
+      opacity: .5;
+    }
+
+    @media (min-width: 500px) {
+      .input-wrap { margin-right: 1rem }
+      footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   </style>
 
@@ -107,7 +133,7 @@ template.innerHTML = `
       <p><span class="left"></span> left</p>
     </article>
 
-    <footer>
+    <footer class="d-none">
       <p>Enter your pledge</p>
       <div>
         <span class="input-wrap"><input type="number" /></span>
@@ -123,10 +149,53 @@ class Cmp_ItemSupportModal extends HTMLElement
   {
     super();
 
+    this._cost = 0;
     this.attachShadow({mode: 'open'});
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.shadowRoot.querySelector('.left').innerText = localStorage.getItem(this.getAttribute('left'));
-    this.shadowRoot.querySelector('.price').innerText = localStorage.getItem(this.getAttribute('cost'));
+
+    const left = this.getAttribute('left');
+    const cost = this.getAttribute('cost');
+
+    if(left && cost)
+    {
+      const item = localStorage.getItem(left);
+      const item2 = localStorage.getItem(cost);
+      let amount = parseFloat(item2.replace(/[^0-9.-]+/g, ''));
+      this.cost = amount;
+      this.shadowRoot.querySelector('.left').innerText = item ? item : '';
+      this.shadowRoot.querySelector('.price').innerText = item2 ? item2 : '';
+      this.shadowRoot.querySelector('input').value = amount;
+    }
+    else
+    {
+      this.shadowRoot.querySelector('h5').classList.add('d-none');
+      this.shadowRoot.querySelector('article p:nth-of-type(2)').classList.add('d-none');
+    }
+  }
+
+  get cost() { return this._cost; }
+  set cost(value) { this._cost = value; }
+
+  handleSelectedCard()
+  {
+
+  }
+
+  handleInputChange(e)
+  {
+    if(e.target.value < this.cost) e.target.value = this.cost;
+  }
+
+  connectedCallback()
+  {
+    this.shadowRoot.querySelector('input').addEventListener('blur', this.handleInputChange.bind(this));
+    this.addEventListener('click', () => {
+      this.shadowRoot.querySelector('footer').classList.remove('d-none');
+    });
+
+    
+
+    this.addEventListener('selected-card', () => this.handleSelectedCard);
   }
 }
 

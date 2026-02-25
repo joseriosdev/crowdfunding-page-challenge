@@ -378,6 +378,10 @@ header .nav-links {
     width: 33vw;
   }
 
+  #support-modal my-modal {
+    width: 50vw;
+  }
+
   header .burger {
     display: none;
   }
